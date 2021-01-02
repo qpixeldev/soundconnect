@@ -1,0 +1,8 @@
+version: "3"
+services:
+  soundconnect-main:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - ./:/usr/src

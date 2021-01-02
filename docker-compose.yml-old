@@ -1,0 +1,22 @@
+version: "3"
+services:
+  soundconnect-main:
+    image: qpixel/soundconnect:latest
+    environment:
+      spotifyCLIENTID: foobar
+      spotifyCLIENTSECRET: foobar
+      twitchCLIENTID: foobar
+      twitchCLIENTSECRET: foobar
+    ports:
+      - "3000:3000"
+    links:
+      - postgres
+    restart: unless-stopped
+    container_name: soundconnect
+  postgres:
+    image: postgres
+    env_file: database.env
+    volumes: database-data:/var/lib/postgresql/data/
+
+volumes:
+  database-data:
